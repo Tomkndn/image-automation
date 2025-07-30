@@ -1,5 +1,5 @@
 # DevOps React App
 
-![Preview](./preview.png)
+![Preview](preview.png)
 
 This is a simple React app deployed with Docker, updated automatically via CI/CD.
