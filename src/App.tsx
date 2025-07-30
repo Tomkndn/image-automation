@@ -21,12 +21,12 @@ const App = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [scrollY, setScrollY] = useState(0);
 
-  const [isDarkModeEnabled, setIsDarkModeEnabled] = useState(false);
+  const [isDarkModeEnabled, setIsDarkModeEnabled] = useState(true);
 
   useEffect(() => {
     const handleScroll = () => setScrollY(window.scrollY);
     window.addEventListener("scroll", handleScroll);
-    setIsDarkModeEnabled(false)
+    setIsDarkModeEnabled(true)
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
