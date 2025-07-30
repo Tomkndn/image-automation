@@ -20,11 +20,13 @@ import ComparisonSection from "./components/Comparison";
 const App = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [scrollY, setScrollY] = useState(0);
+
   const [isDarkModeEnabled, setIsDarkModeEnabled] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => setScrollY(window.scrollY);
     window.addEventListener("scroll", handleScroll);
+    setIsDarkModeEnabled(false)
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
