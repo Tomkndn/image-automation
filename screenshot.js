@@ -1,4 +1,5 @@
 import puppeteer from "puppeteer";
+import fs from "fs";
 
 (async () => {
   try {
@@ -13,11 +14,43 @@ import puppeteer from "puppeteer";
     });
 
     await page.setViewport({ width: 1280, height: 800 });
-    await page.screenshot({ path: "preview.png", fullPage: true });
 
-    console.log("✅ Screenshot captured and saved as preview.png");
+    const timestamp = new Date().toISOString().replace(/[:.]/g, "-");
+    const screenshotFilename = `preview-${timestamp}.png`;
+
+    // Take screenshot
+    await page.screenshot({ path: screenshotFilename, fullPage: true });
 
     await browser.close();
+
+    console.log(`✅ Screenshot saved as ${screenshotFilename}`);
+
+    // Clean up old screenshots
+    const files = fs.readdirSync(".");
+    files.forEach((file) => {
+      if (
+        file.startsWith("preview-") &&
+        file.endsWith(".png") &&
+        file !== screenshotFilename
+      ) {
+        fs.unlinkSync(file);
+        console.log(`🗑️ Deleted old screenshot: ${file}`);
+      }
+    });
+
+    // Update README.md
+    const readmePath = "README.md";
+    let readmeContent = fs.readFileSync(readmePath, "utf-8");
+
+    const newMarkdown = `![preview](${screenshotFilename})`;
+
+    const updatedContent = readmeContent.replace(
+      /!\[preview\]\(.*preview-.*\.png\)/,
+      newMarkdown
+    );
+
+    fs.writeFileSync(readmePath, updatedContent, "utf-8");
+    console.log("📝 README.md updated with latest screenshot");
   } catch (error) {
     console.error("❌ Error taking screenshot:", error);
     process.exit(1);
