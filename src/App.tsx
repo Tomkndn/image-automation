@@ -42,11 +42,13 @@ const App = () => {
   return (
     <div className="bg-slate-50 text-slate-800 overflow-x-hidden">
       {/* Enhanced Navbar */}
-      <nav className={`fixed top-0 w-full z-50 transition-all duration-300 ${
-        scrollY > 50 
-          ? 'bg-white/90 backdrop-blur-md shadow-lg border-b border-slate-200/50' 
-          : 'bg-transparent'
-      }`}>
+      <nav
+        className={`fixed top-0 w-full z-50 transition-all duration-300 ${
+          scrollY > 50
+            ? "bg-white/90 backdrop-blur-md shadow-lg border-b border-slate-200/50"
+            : "bg-transparent"
+        }`}
+      >
         <div className="max-w-7xl mx-auto px-6 py-4">
           <div className="flex justify-between items-center">
             <div className="flex items-center space-x-2">
@@ -57,10 +59,10 @@ const App = () => {
                 LaunchNow
               </h1>
             </div>
-            
+
             <div className="hidden md:flex items-center gap-8">
               <div className="flex gap-6 text-sm text-slate-600">
-                {['Features', 'Pricing', 'Contact'].map((item) => (
+                {["Features", "Pricing", "Contact"].map((item) => (
                   <a
                     key={item}
                     href={`#${item.toLowerCase()}`}
@@ -80,7 +82,11 @@ const App = () => {
               onClick={() => setIsMenuOpen(!isMenuOpen)}
               className="md:hidden p-2 rounded-lg hover:bg-slate-100 transition-colors"
             >
-              {isMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+              {isMenuOpen ? (
+                <X className="w-6 h-6" />
+              ) : (
+                <Menu className="w-6 h-6" />
+              )}
             </button>
           </div>
         </div>
@@ -89,7 +95,7 @@ const App = () => {
         {isMenuOpen && (
           <div className="md:hidden bg-white/95 backdrop-blur-md border-t border-slate-200/50">
             <div className="px-6 py-4 space-y-4">
-              {['Features', 'Pricing', 'Contact'].map((item) => (
+              {["Features", "Pricing", "Contact"].map((item) => (
                 <a
                   key={item}
                   href={`#${item.toLowerCase()}`}
@@ -124,7 +130,7 @@ const App = () => {
                 <Star className="w-4 h-4 fill-current" />
                 Trusted by 10K+ developers
               </div>
-              
+
               <h1 className="text-5xl lg:text-7xl font-extrabold leading-tight">
                 <span className="bg-gradient-to-r from-slate-900 via-slate-800 to-slate-900 bg-clip-text text-transparent">
                   Supercharge Your
@@ -134,10 +140,11 @@ const App = () => {
                   Launch
                 </span>
               </h1>
-              
+
               <p className="text-xl text-slate-600 max-w-2xl leading-relaxed">
-                Build modern applications at lightning speed with our battle-tested Vite + Tailwind setup. 
-                Perfect for startups, hackathons, and MVPs that need to ship fast.
+                Build modern applications at lightning speed with our
+                battle-tested Vite + Tailwind setup. Perfect for startups,
+                hackathons, and MVPs that need to ship fast.
               </p>
 
               <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
@@ -155,7 +162,9 @@ const App = () => {
               <div className="grid grid-cols-4 gap-6 pt-8 border-t border-slate-200">
                 {stats.map((stat, i) => (
                   <div key={i} className="text-center">
-                    <div className="text-2xl font-bold text-slate-900">{stat.number}</div>
+                    <div className="text-2xl font-bold text-slate-900">
+                      {stat.number}
+                    </div>
                     <div className="text-sm text-slate-500">{stat.label}</div>
                   </div>
                 ))}
@@ -173,7 +182,7 @@ const App = () => {
                 />
                 <div className="absolute inset-0 bg-gradient-to-tr from-indigo-500/10 to-transparent rounded-2xl"></div>
               </div>
-              
+
               {/* Floating elements */}
               <div className="absolute -top-6 -right-6 bg-white rounded-2xl shadow-lg p-4 animate-bounce delay-300">
                 <div className="flex items-center gap-2">
@@ -181,7 +190,7 @@ const App = () => {
                   <span className="text-sm font-medium">Live</span>
                 </div>
               </div>
-              
+
               <div className="absolute -bottom-6 -left-6 bg-white rounded-2xl shadow-lg p-4 animate-bounce delay-700">
                 <div className="flex items-center gap-2">
                   <Users className="w-4 h-4 text-indigo-600" />
@@ -208,7 +217,8 @@ const App = () => {
               </span>
             </h2>
             <p className="text-xl text-slate-600 max-w-3xl mx-auto">
-              Everything you need to build, ship, and scale modern applications with confidence
+              Everything you need to build, ship, and scale modern applications
+              with confidence
             </p>
           </div>
 
@@ -222,7 +232,9 @@ const App = () => {
                 >
                   <div className="absolute inset-0 bg-gradient-to-br from-slate-50 to-white rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                   <div className="relative">
-                    <div className={`inline-flex p-4 rounded-2xl bg-gradient-to-br ${feature.color} mb-6 group-hover:scale-110 transition-transform duration-300`}>
+                    <div
+                      className={`inline-flex p-4 rounded-2xl bg-gradient-to-br ${feature.color} mb-6 group-hover:scale-110 transition-transform duration-300`}
+                    >
                       <IconComponent className="w-8 h-8 text-white" />
                     </div>
                     <h3 className="text-2xl font-bold mb-4 text-slate-900">
@@ -240,7 +252,10 @@ const App = () => {
       </section>
 
       {/* Enhanced Pricing Section */}
-      <section id="pricing" className="py-24 bg-gradient-to-br from-slate-50 to-indigo-50">
+      <section
+        id="pricing"
+        className="py-24 bg-gradient-to-br from-slate-50 to-indigo-50"
+      >
         <div className="max-w-7xl mx-auto px-6">
           <div className="text-center mb-20">
             <h2 className="text-5xl font-bold mb-6">
@@ -259,30 +274,47 @@ const App = () => {
                 plan: "Starter",
                 price: "₹0",
                 period: "forever",
-                features: ["1 Project", "Basic Components", "Community Support", "Core Templates"],
-                popular: false
+                features: [
+                  "1 Project",
+                  "Basic Components",
+                  "Community Support",
+                  "Core Templates",
+                ],
+                popular: false,
               },
               {
                 plan: "Pro",
                 price: "₹499",
                 period: "month",
-                features: ["Unlimited Projects", "All Components", "Priority Support", "Advanced Templates", "Custom Themes"],
-                popular: true
+                features: [
+                  "Unlimited Projects",
+                  "All Components",
+                  "Priority Support",
+                  "Advanced Templates",
+                  "Custom Themes",
+                ],
+                popular: true,
               },
               {
                 plan: "Enterprise",
                 price: "Custom",
                 period: "contact us",
-                features: ["Everything in Pro", "Dedicated Team", "SLA & Uptime", "Custom Development", "White-label Solution"],
-                popular: false
-              }
+                features: [
+                  "Everything in Pro",
+                  "Dedicated Team",
+                  "SLA & Uptime",
+                  "Custom Development",
+                  "White-label Solution",
+                ],
+                popular: false,
+              },
             ].map((pkg, i) => (
               <div
                 key={i}
                 className={`relative rounded-3xl p-8 transition-all duration-300 hover:-translate-y-2 ${
-                  pkg.popular 
-                    ? 'bg-gradient-to-br from-indigo-600 to-purple-600 text-white shadow-2xl scale-105' 
-                    : 'bg-white shadow-lg hover:shadow-2xl border border-slate-200'
+                  pkg.popular
+                    ? "bg-gradient-to-br from-indigo-600 to-purple-600 text-white shadow-2xl scale-105"
+                    : "bg-white shadow-lg hover:shadow-2xl border border-slate-200"
                 }`}
               >
                 {pkg.popular && (
@@ -292,17 +324,29 @@ const App = () => {
                     </span>
                   </div>
                 )}
-                
+
                 <div className="text-center mb-8">
-                  <h3 className={`text-2xl font-bold mb-2 ${pkg.popular ? 'text-white' : 'text-slate-900'}`}>
+                  <h3
+                    className={`text-2xl font-bold mb-2 ${
+                      pkg.popular ? "text-white" : "text-slate-900"
+                    }`}
+                  >
                     {pkg.plan}
                   </h3>
                   <div className="mb-4">
-                    <span className={`text-4xl font-bold ${pkg.popular ? 'text-white' : 'text-slate-900'}`}>
+                    <span
+                      className={`text-4xl font-bold ${
+                        pkg.popular ? "text-white" : "text-slate-900"
+                      }`}
+                    >
                       {pkg.price}
                     </span>
-                    {pkg.period !== 'contact us' && (
-                      <span className={`text-sm ${pkg.popular ? 'text-indigo-100' : 'text-slate-500'}`}>
+                    {pkg.period !== "contact us" && (
+                      <span
+                        className={`text-sm ${
+                          pkg.popular ? "text-indigo-100" : "text-slate-500"
+                        }`}
+                      >
                         /{pkg.period}
                       </span>
                     )}
@@ -312,8 +356,16 @@ const App = () => {
                 <ul className="space-y-4 mb-8">
                   {pkg.features.map((feature, idx) => (
                     <li key={idx} className="flex items-center gap-3">
-                      <Check className={`w-5 h-5 ${pkg.popular ? 'text-green-300' : 'text-green-500'}`} />
-                      <span className={pkg.popular ? 'text-indigo-100' : 'text-slate-600'}>
+                      <Check
+                        className={`w-5 h-5 ${
+                          pkg.popular ? "text-green-300" : "text-green-500"
+                        }`}
+                      />
+                      <span
+                        className={
+                          pkg.popular ? "text-indigo-100" : "text-slate-600"
+                        }
+                      >
                         {feature}
                       </span>
                     </li>
@@ -323,11 +375,11 @@ const App = () => {
                 <button
                   className={`w-full py-4 rounded-2xl font-semibold transition-all duration-200 ${
                     pkg.popular
-                      ? 'bg-white text-indigo-600 hover:bg-indigo-50 hover:scale-105'
-                      : 'bg-gradient-to-r from-indigo-600 to-purple-600 text-white hover:shadow-lg hover:scale-105'
+                      ? "bg-white text-indigo-600 hover:bg-indigo-50 hover:scale-105"
+                      : "bg-gradient-to-r from-indigo-600 to-purple-600 text-white hover:shadow-lg hover:scale-105"
                   }`}
                 >
-                  {pkg.price === 'Custom' ? 'Contact Sales' : 'Get Started'}
+                  {pkg.price === "Custom" ? "Contact Sales" : "Get Started"}
                 </button>
               </div>
             ))}
@@ -345,7 +397,8 @@ const App = () => {
               </span>
             </h2>
             <p className="text-xl text-slate-600">
-              Ready to transform your ideas into reality? Get in touch with our team.
+              Ready to transform your ideas into reality? Get in touch with our
+              team.
             </p>
           </div>
 
@@ -353,7 +406,9 @@ const App = () => {
             <div className="space-y-6">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div>
-                  <label className="block text-sm font-medium text-slate-700 mb-2">Name</label>
+                  <label className="block text-sm font-medium text-slate-700 mb-2">
+                    Name
+                  </label>
                   <input
                     type="text"
                     placeholder="Your full name"
@@ -361,7 +416,9 @@ const App = () => {
                   />
                 </div>
                 <div>
-                  <label className="block text-sm font-medium text-slate-700 mb-2">Email</label>
+                  <label className="block text-sm font-medium text-slate-700 mb-2">
+                    Email
+                  </label>
                   <input
                     type="email"
                     placeholder="your@email.com"
@@ -369,28 +426,30 @@ const App = () => {
                   />
                 </div>
               </div>
-              
+
               <div>
-                <label className="block text-sm font-medium text-slate-700 mb-2">Subject</label>
+                <label className="block text-sm font-medium text-slate-700 mb-2">
+                  Subject
+                </label>
                 <input
                   type="text"
                   placeholder="What's this about?"
                   className="w-full px-4 py-3 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition-all duration-200 bg-white"
                 />
               </div>
-              
+
               <div>
-                <label className="block text-sm font-medium text-slate-700 mb-2">Message</label>
+                <label className="block text-sm font-medium text-slate-700 mb-2">
+                  Message
+                </label>
                 <textarea
                   rows={6}
                   placeholder="Tell us about your project..."
                   className="w-full px-4 py-3 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition-all duration-200 bg-white resize-none"
                 />
               </div>
-              
-              <button
-                className="w-full bg-gradient-to-r from-indigo-600 to-purple-600 text-white py-4 rounded-xl font-semibold text-lg shadow-lg hover:shadow-xl hover:scale-[1.02] transition-all duration-200 flex items-center justify-center"
-              >
+
+              <button className="w-full bg-gradient-to-r from-indigo-600 to-purple-600 text-white py-4 rounded-xl font-semibold text-lg shadow-lg hover:shadow-xl hover:scale-[1.02] transition-all duration-200 flex items-center justify-center">
                 Send Message
               </button>
             </div>
@@ -398,8 +457,142 @@ const App = () => {
         </div>
       </section>
 
+      {/* Testimonials Section */}
+      <section className="py-24 bg-gradient-to-br from-indigo-50 via-white to-purple-50 relative overflow-hidden">
+        {/* Background decoration */}
+        <div className="absolute top-0 left-0 w-full h-full opacity-30">
+          <div className="absolute top-1/4 left-1/4 w-32 h-32 bg-gradient-to-br from-indigo-400 to-purple-500 rounded-full blur-2xl"></div>
+          <div className="absolute bottom-1/4 right-1/4 w-40 h-40 bg-gradient-to-br from-pink-400 to-indigo-500 rounded-full blur-2xl"></div>
+        </div>
 
-      <footer className="bg-slate-900 text-white py-16" >
+        <div className="max-w-7xl mx-auto px-6 relative">
+          <div className="text-center mb-20">
+            <h2 className="text-5xl font-bold mb-6">
+              <span className="bg-gradient-to-r from-slate-900 to-slate-700 bg-clip-text text-transparent">
+                Loved by Developers Worldwide
+              </span>
+            </h2>
+            <p className="text-xl text-slate-600 max-w-3xl mx-auto">
+              See what our community has to say about their experience with
+              LaunchNow
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {[
+              {
+                name: "Sarah Chen",
+                role: "Senior Frontend Developer",
+                company: "TechStart Inc.",
+                avatar:
+                  "https://images.unsplash.com/photo-1494790108755-2616b612b665?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80",
+                content:
+                  "LaunchNow cut our development time by 60%. The setup is incredibly smooth and the components are production-ready from day one.",
+                rating: 5,
+              },
+              {
+                name: "Marcus Rodriguez",
+                role: "Full Stack Developer",
+                company: "Startup Labs",
+                avatar:
+                  "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80",
+                content:
+                  "As someone who's built 20+ MVPs, this is hands down the best starter kit I've used. The developer experience is phenomenal.",
+                rating: 5,
+              },
+              {
+                name: "Emily Watson",
+                role: "Product Manager",
+                company: "InnovateCorp",
+                avatar:
+                  "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80",
+                content:
+                  "Our team shipped 3 products this quarter using LaunchNow. The consistency and quality across projects is amazing.",
+                rating: 5,
+              },
+            ].map((testimonial, i) => (
+              <div
+                key={i}
+                className="group bg-white rounded-3xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 border border-slate-100 relative"
+              >
+                {/* Quote decoration */}
+                <div className="absolute top-4 right-6 text-6xl text-indigo-100 font-serif">
+                  "
+                </div>
+
+                <div className="relative">
+                  {/* Rating stars */}
+                  <div className="flex gap-1 mb-4">
+                    {[...Array(testimonial.rating)].map((_, idx) => (
+                      <Star
+                        key={idx}
+                        className="w-5 h-5 fill-yellow-400 text-yellow-400"
+                      />
+                    ))}
+                  </div>
+
+                  <p className="text-slate-700 leading-relaxed mb-6 text-lg">
+                    {testimonial.content}
+                  </p>
+
+                  <div className="flex items-center gap-4">
+                    <img
+                      src={testimonial.avatar}
+                      alt={testimonial.name}
+                      className="w-12 h-12 rounded-full object-cover ring-2 ring-indigo-100"
+                    />
+                    <div>
+                      <h4 className="font-semibold text-slate-900">
+                        {testimonial.name}
+                      </h4>
+                      <p className="text-sm text-slate-500">
+                        {testimonial.role}
+                      </p>
+                      <p className="text-sm text-indigo-600 font-medium">
+                        {testimonial.company}
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          {/* Call to action */}
+          <div className="text-center mt-16">
+            <div className="inline-flex items-center gap-4 bg-white rounded-2xl p-6 shadow-lg">
+              <div className="flex -space-x-2">
+                {[
+                  "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&auto=format&fit=crop&w=40&q=80",
+                  "https://images.unsplash.com/photo-1517841905240-472988babdf9?ixlib=rb-4.0.3&auto=format&fit=crop&w=40&q=80",
+                  "https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?ixlib=rb-4.0.3&auto=format&fit=crop&w=40&q=80",
+                  "https://images.unsplash.com/photo-1524504388940-b1c1722653e1?ixlib=rb-4.0.3&auto=format&fit=crop&w=40&q=80",
+                ].map((avatar, idx) => (
+                  <img
+                    key={idx}
+                    src={avatar}
+                    alt={`User ${idx + 1}`}
+                    className="w-10 h-10 rounded-full border-2 border-white object-cover"
+                  />
+                ))}
+                <div className="w-10 h-10 rounded-full border-2 border-white bg-gradient-to-br from-indigo-500 to-purple-600 flex items-center justify-center">
+                  <span className="text-white text-sm font-bold">+</span>
+                </div>
+              </div>
+              <div className="text-left">
+                <p className="text-slate-900 font-semibold">
+                  Join 10,000+ developers
+                </p>
+                <p className="text-slate-600 text-sm">
+                  Building the future with LaunchNow
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <footer className="bg-slate-900 text-white py-16">
         <div className="max-w-7xl mx-auto px-6">
           <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-12">
             <div className="col-span-1 md:col-span-2">
@@ -412,11 +605,12 @@ const App = () => {
                 </h1>
               </div>
               <p className="text-slate-400 mb-6 max-w-md">
-                Empowering developers to build faster, ship sooner, and scale with confidence. 
-                Join thousands of developers who trust LaunchNow.
+                Empowering developers to build faster, ship sooner, and scale
+                with confidence. Join thousands of developers who trust
+                LaunchNow.
               </p>
               <div className="flex space-x-4">
-                {['Twitter', 'GitHub', 'Discord'].map((social) => (
+                {["Twitter", "GitHub", "Discord"].map((social) => (
                   <a
                     key={social}
                     href="#"
@@ -427,40 +621,49 @@ const App = () => {
                 ))}
               </div>
             </div>
-            
+
             <div>
               <h3 className="font-semibold mb-4">Product</h3>
               <ul className="space-y-2 text-slate-400">
-                {['Features', 'Pricing', 'Documentation', 'API'].map((item) => (
+                {["Features", "Pricing", "Documentation", "API"].map((item) => (
                   <li key={item}>
-                    <a href="#" className="hover:text-white transition-colors duration-200">
+                    <a
+                      href="#"
+                      className="hover:text-white transition-colors duration-200"
+                    >
                       {item}
                     </a>
                   </li>
                 ))}
               </ul>
             </div>
-            
+
             <div>
               <h3 className="font-semibold mb-4">Support</h3>
               <ul className="space-y-2 text-slate-400">
-                {['Help Center', 'Contact', 'Status', 'Community'].map((item) => (
-                  <li key={item}>
-                    <a href="#" className="hover:text-white transition-colors duration-200">
-                      {item}
-                    </a>
-                  </li>
-                ))}
+                {["Help Center", "Contact", "Status", "Community"].map(
+                  (item) => (
+                    <li key={item}>
+                      <a
+                        href="#"
+                        className="hover:text-white transition-colors duration-200"
+                      >
+                        {item}
+                      </a>
+                    </li>
+                  )
+                )}
               </ul>
             </div>
           </div>
-          
+
           <div className="border-t border-slate-800 pt-8 flex flex-col md:flex-row justify-between items-center">
             <p className="text-slate-400 text-sm">
-              © {new Date().getFullYear()} LaunchNow. Built with ❤️ using Vite + React + Tailwind CSS
+              © {new Date().getFullYear()} LaunchNow. Built with ❤️ using Vite +
+              React + Tailwind CSS
             </p>
             <div className="flex space-x-6 mt-4 md:mt-0">
-              {['Privacy', 'Terms', 'Cookies'].map((item) => (
+              {["Privacy", "Terms", "Cookies"].map((item) => (
                 <a
                   key={item}
                   href="#"
@@ -473,8 +676,7 @@ const App = () => {
           </div>
         </div>
       </footer>
-          </div>
-
+    </div>
   );
 };
 
