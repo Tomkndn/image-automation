@@ -1,181 +1,480 @@
-
+import { useState, useEffect } from 'react';
+import { ChevronDown, Zap, Smartphone, Brain, Check, Menu, X, ArrowRight, Star, Users, Rocket } from 'lucide-react';
 
 const App = () => {
-  return (
-    <div className="bg-white text-gray-800">
-      {/* Navbar */}
-      <nav className="flex justify-between items-center px-6 py-5 shadow-sm sticky top-0 bg-white z-10">
-        <h1 className="text-2xl font-bold text-indigo-700">LaunchNow</h1>
-        <div className="hidden md:flex gap-6 text-sm text-gray-600">
-          <a href="#features" className="hover:text-indigo-600 transition">
-            Features
-          </a>
-          <a href="#pricing" className="hover:text-indigo-600 transition">
-            Pricing
-          </a>
-          <a href="#contact" className="hover:text-indigo-600 transition">
-            Contact
-          </a>
-        </div>
-        <a
-          href="#"
-          className="bg-indigo-600 text-white px-5 py-2 rounded-md text-sm hover:bg-indigo-700 transition"
-        >
-          Sign Up
-        </a>
-      </nav>
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [scrollY, setScrollY] = useState(0);
 
-      {/* Hero Section */}
-      <section className="flex flex-col-reverse md:flex-row items-center px-6 py-24 max-w-7xl mx-auto gap-10">
-        <div className="md:w-1/2 text-center md:text-left animate-fade-in">
-          <h2 className="text-5xl font-extrabold text-indigo-700 mb-4 leading-tight">
-            Build Fast. Launch Faster.
-          </h2>
-          <p className="text-lg text-gray-600 mb-6">
-            Supercharge your development workflow with our production-ready
-            starter kit. Built with Vite, React & Tailwind.
-          </p>
-          <div className="flex justify-center md:justify-start gap-4">
-            <a
-              href="#"
-              className="px-6 py-3 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 transition"
+  useEffect(() => {
+    const handleScroll = () => setScrollY(window.scrollY);
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  const features = [
+    {
+      icon: Zap,
+      title: "Lightning Fast",
+      desc: "Vite ensures super-fast local development and HMR for instant feedback.",
+      color: "from-yellow-400 to-orange-500"
+    },
+    {
+      icon: Smartphone,
+      title: "Mobile First",
+      desc: "Responsive design that looks stunning on every device and screen size.",
+      color: "from-blue-400 to-purple-500"
+    },
+    {
+      icon: Brain,
+      title: "Developer Friendly",
+      desc: "Component-first architecture, easy to extend, built for productivity.",
+      color: "from-green-400 to-teal-500"
+    },
+  ];
+
+  const stats = [
+    { number: "10K+", label: "Developers" },
+    { number: "500+", label: "Projects Built" },
+    { number: "99.9%", label: "Uptime" },
+    { number: "24/7", label: "Support" }
+  ];
+
+  return (
+    <div className="bg-slate-50 text-slate-800 overflow-x-hidden">
+      {/* Enhanced Navbar */}
+      <nav className={`fixed top-0 w-full z-50 transition-all duration-300 ${
+        scrollY > 50 
+          ? 'bg-white/90 backdrop-blur-md shadow-lg border-b border-slate-200/50' 
+          : 'bg-transparent'
+      }`}>
+        <div className="max-w-7xl mx-auto px-6 py-4">
+          <div className="flex justify-between items-center">
+            <div className="flex items-center space-x-2">
+              <div className="w-8 h-8 bg-gradient-to-br from-indigo-500 to-purple-600 rounded-lg flex items-center justify-center">
+                <Rocket className="w-5 h-5 text-white" />
+              </div>
+              <h1 className="text-2xl font-bold bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent">
+                LaunchNow
+              </h1>
+            </div>
+            
+            <div className="hidden md:flex items-center gap-8">
+              <div className="flex gap-6 text-sm text-slate-600">
+                {['Features', 'Pricing', 'Contact'].map((item) => (
+                  <a
+                    key={item}
+                    href={`#${item.toLowerCase()}`}
+                    className="hover:text-indigo-600 transition-colors duration-200 font-medium relative group"
+                  >
+                    {item}
+                    <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-indigo-600 transition-all duration-200 group-hover:w-full"></span>
+                  </a>
+                ))}
+              </div>
+              <button className="bg-gradient-to-r from-indigo-600 to-purple-600 text-white px-6 py-2.5 rounded-full text-sm font-medium hover:shadow-lg hover:scale-105 transition-all duration-200 shadow-md">
+                Sign Up Free
+              </button>
+            </div>
+
+            <button
+              onClick={() => setIsMenuOpen(!isMenuOpen)}
+              className="md:hidden p-2 rounded-lg hover:bg-slate-100 transition-colors"
             >
-              Try it Free
-            </a>
-            <a
-              href="#features"
-              className="px-6 py-3 border border-indigo-600 text-indigo-600 rounded-lg hover:bg-indigo-50 transition"
-            >
-              Explore Features
-            </a>
+              {isMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+            </button>
           </div>
         </div>
-        <img
-          src="https://source.unsplash.com/featured/?startup,office"
-          alt="Hero"
-          className="w-full md:w-1/2 rounded-xl shadow-md animate-fade-in"
-        />
-      </section>
 
-      {/* Features Section */}
-      <section id="features" className="py-24 bg-gray-50 text-center">
-        <h3 className="text-4xl font-bold mb-12">What You Get</h3>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-10 max-w-6xl mx-auto px-6">
-          {[
-            {
-              title: "⚡ Lightning Fast",
-              desc: "Vite ensures super-fast local development and HMR.",
-            },
-            {
-              title: "📱 Mobile First",
-              desc: "Designed to look amazing on any screen size.",
-            },
-            {
-              title: "🧠 Developer Friendly",
-              desc: "Component-first, easy to extend, built for speed.",
-            },
-          ].map((feature, i) => (
-            <div
-              key={i}
-              className="bg-white p-6 rounded-xl shadow hover:shadow-lg transition animate-fade-in"
-            >
-              <h4 className="text-xl font-semibold mb-2 text-indigo-700">
-                {feature.title}
-              </h4>
-              <p className="text-gray-600">{feature.desc}</p>
+        {/* Mobile Menu */}
+        {isMenuOpen && (
+          <div className="md:hidden bg-white/95 backdrop-blur-md border-t border-slate-200/50">
+            <div className="px-6 py-4 space-y-4">
+              {['Features', 'Pricing', 'Contact'].map((item) => (
+                <a
+                  key={item}
+                  href={`#${item.toLowerCase()}`}
+                  className="block text-slate-600 hover:text-indigo-600 transition-colors font-medium"
+                  onClick={() => setIsMenuOpen(false)}
+                >
+                  {item}
+                </a>
+              ))}
+              <button className="w-full bg-gradient-to-r from-indigo-600 to-purple-600 text-white px-6 py-2.5 rounded-full text-sm font-medium">
+                Sign Up Free
+              </button>
             </div>
-          ))}
+          </div>
+        )}
+      </nav>
+
+      {/* Enhanced Hero Section */}
+      <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
+        {/* Animated Background */}
+        <div className="absolute inset-0 -z-10">
+          <div className="absolute top-1/4 left-1/4 w-72 h-72 bg-gradient-to-br from-indigo-400/30 to-purple-500/30 rounded-full blur-3xl animate-pulse"></div>
+          <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-gradient-to-br from-blue-400/20 to-teal-500/20 rounded-full blur-3xl animate-pulse delay-1000"></div>
+          <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-gradient-to-br from-pink-400/10 to-indigo-500/10 rounded-full blur-3xl animate-pulse delay-500"></div>
+        </div>
+
+        <div className="max-w-7xl mx-auto px-6 py-20 pt-32">
+          <div className="flex flex-col-reverse lg:flex-row items-center gap-16">
+            {/* Enhanced Text Section */}
+            <div className="lg:w-1/2 text-center lg:text-left space-y-8">
+              <div className="inline-flex items-center gap-2 bg-gradient-to-r from-indigo-50 to-purple-50 border border-indigo-200/50 rounded-full px-4 py-2 text-sm font-medium text-indigo-700">
+                <Star className="w-4 h-4 fill-current" />
+                Trusted by 10K+ developers
+              </div>
+              
+              <h1 className="text-5xl lg:text-7xl font-extrabold leading-tight">
+                <span className="bg-gradient-to-r from-slate-900 via-slate-800 to-slate-900 bg-clip-text text-transparent">
+                  Supercharge Your
+                </span>
+                <br />
+                <span className="bg-gradient-to-r from-indigo-600 via-purple-600 to-indigo-700 bg-clip-text text-transparent">
+                  Launch
+                </span>
+              </h1>
+              
+              <p className="text-xl text-slate-600 max-w-2xl leading-relaxed">
+                Build modern applications at lightning speed with our battle-tested Vite + Tailwind setup. 
+                Perfect for startups, hackathons, and MVPs that need to ship fast.
+              </p>
+
+              <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+                <button className="group bg-gradient-to-r from-indigo-600 to-purple-600 text-white px-8 py-4 rounded-full font-semibold text-lg shadow-xl hover:shadow-2xl hover:scale-105 transition-all duration-200 flex items-center justify-center gap-2">
+                  <Rocket className="w-5 h-5 group-hover:animate-bounce" />
+                  Get Started Free
+                  <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                </button>
+                <button className="border-2 border-slate-300 text-slate-700 px-8 py-4 rounded-full font-semibold text-lg hover:border-indigo-300 hover:text-indigo-600 hover:bg-indigo-50 transition-all duration-200">
+                  Watch Demo
+                </button>
+              </div>
+
+              {/* Stats */}
+              <div className="grid grid-cols-4 gap-6 pt-8 border-t border-slate-200">
+                {stats.map((stat, i) => (
+                  <div key={i} className="text-center">
+                    <div className="text-2xl font-bold text-slate-900">{stat.number}</div>
+                    <div className="text-sm text-slate-500">{stat.label}</div>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Enhanced Image Section */}
+            <div className="lg:w-1/2 relative">
+              <div className="relative group">
+                <div className="absolute -inset-4 bg-gradient-to-r from-indigo-500/20 to-purple-500/20 rounded-2xl blur-xl group-hover:blur-2xl transition-all duration-300"></div>
+                <img
+                  src="https://images.unsplash.com/photo-1551650975-87deedd944c3?ixlib=rb-4.0.3&auto=format&fit=crop&w=1974&q=80"
+                  alt="Modern workspace with multiple screens showing code"
+                  className="relative w-full rounded-2xl shadow-2xl group-hover:scale-[1.02] transition-transform duration-300"
+                />
+                <div className="absolute inset-0 bg-gradient-to-tr from-indigo-500/10 to-transparent rounded-2xl"></div>
+              </div>
+              
+              {/* Floating elements */}
+              <div className="absolute -top-6 -right-6 bg-white rounded-2xl shadow-lg p-4 animate-bounce delay-300">
+                <div className="flex items-center gap-2">
+                  <div className="w-3 h-3 bg-green-500 rounded-full animate-pulse"></div>
+                  <span className="text-sm font-medium">Live</span>
+                </div>
+              </div>
+              
+              <div className="absolute -bottom-6 -left-6 bg-white rounded-2xl shadow-lg p-4 animate-bounce delay-700">
+                <div className="flex items-center gap-2">
+                  <Users className="w-4 h-4 text-indigo-600" />
+                  <span className="text-sm font-medium">10K+ Users</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Scroll indicator */}
+        <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
+          <ChevronDown className="w-6 h-6 text-slate-400" />
         </div>
       </section>
 
-      {/* Pricing Section */}
-      <section id="pricing" className="py-24 bg-white text-center">
-        <h3 className="text-4xl font-bold mb-12">Simple Pricing</h3>
-        <div className="flex flex-col md:flex-row justify-center gap-10 px-6 max-w-6xl mx-auto">
-          {[
-            {
-              plan: "Free",
-              price: "₹0",
-              features: ["1 Project", "Basic Components", "Community Support"],
-            },
-            {
-              plan: "Pro",
-              price: "₹499/mo",
-              features: [
-                "Unlimited Projects",
-                "All Components",
-                "Priority Support",
-              ],
-            },
-            {
-              plan: "Enterprise",
-              price: "₹Contact",
-              features: ["Custom Needs", "Dedicated Team", "SLA & Uptime"],
-            },
-          ].map((pkg, i) => (
-            <div
-              key={i}
-              className="border rounded-xl p-8 shadow hover:shadow-md transition w-full md:w-1/3"
-            >
-              <h4 className="text-xl font-semibold mb-2 text-indigo-700">
-                {pkg.plan}
-              </h4>
-              <p className="text-3xl font-bold mb-4">{pkg.price}</p>
-              <ul className="text-gray-600 mb-6 space-y-2">
-                {pkg.features.map((f, idx) => (
-                  <li key={idx}>✔ {f}</li>
+      {/* Enhanced Features Section */}
+      <section id="features" className="py-24 bg-white relative">
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="text-center mb-20">
+            <h2 className="text-5xl font-bold mb-6">
+              <span className="bg-gradient-to-r from-slate-900 to-slate-700 bg-clip-text text-transparent">
+                Why Choose LaunchNow?
+              </span>
+            </h2>
+            <p className="text-xl text-slate-600 max-w-3xl mx-auto">
+              Everything you need to build, ship, and scale modern applications with confidence
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {features.map((feature, i) => {
+              const IconComponent = feature.icon;
+              return (
+                <div
+                  key={i}
+                  className="group relative bg-white rounded-3xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 border border-slate-100"
+                >
+                  <div className="absolute inset-0 bg-gradient-to-br from-slate-50 to-white rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                  <div className="relative">
+                    <div className={`inline-flex p-4 rounded-2xl bg-gradient-to-br ${feature.color} mb-6 group-hover:scale-110 transition-transform duration-300`}>
+                      <IconComponent className="w-8 h-8 text-white" />
+                    </div>
+                    <h3 className="text-2xl font-bold mb-4 text-slate-900">
+                      {feature.title}
+                    </h3>
+                    <p className="text-slate-600 leading-relaxed">
+                      {feature.desc}
+                    </p>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+
+      {/* Enhanced Pricing Section */}
+      <section id="pricing" className="py-24 bg-gradient-to-br from-slate-50 to-indigo-50">
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="text-center mb-20">
+            <h2 className="text-5xl font-bold mb-6">
+              <span className="bg-gradient-to-r from-slate-900 to-slate-700 bg-clip-text text-transparent">
+                Simple, Transparent Pricing
+              </span>
+            </h2>
+            <p className="text-xl text-slate-600">
+              Choose the perfect plan for your needs
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {[
+              {
+                plan: "Starter",
+                price: "₹0",
+                period: "forever",
+                features: ["1 Project", "Basic Components", "Community Support", "Core Templates"],
+                popular: false
+              },
+              {
+                plan: "Pro",
+                price: "₹499",
+                period: "month",
+                features: ["Unlimited Projects", "All Components", "Priority Support", "Advanced Templates", "Custom Themes"],
+                popular: true
+              },
+              {
+                plan: "Enterprise",
+                price: "Custom",
+                period: "contact us",
+                features: ["Everything in Pro", "Dedicated Team", "SLA & Uptime", "Custom Development", "White-label Solution"],
+                popular: false
+              }
+            ].map((pkg, i) => (
+              <div
+                key={i}
+                className={`relative rounded-3xl p-8 transition-all duration-300 hover:-translate-y-2 ${
+                  pkg.popular 
+                    ? 'bg-gradient-to-br from-indigo-600 to-purple-600 text-white shadow-2xl scale-105' 
+                    : 'bg-white shadow-lg hover:shadow-2xl border border-slate-200'
+                }`}
+              >
+                {pkg.popular && (
+                  <div className="absolute -top-4 left-1/2 transform -translate-x-1/2">
+                    <span className="bg-gradient-to-r from-yellow-400 to-orange-500 text-white px-4 py-1 rounded-full text-sm font-bold">
+                      Most Popular
+                    </span>
+                  </div>
+                )}
+                
+                <div className="text-center mb-8">
+                  <h3 className={`text-2xl font-bold mb-2 ${pkg.popular ? 'text-white' : 'text-slate-900'}`}>
+                    {pkg.plan}
+                  </h3>
+                  <div className="mb-4">
+                    <span className={`text-4xl font-bold ${pkg.popular ? 'text-white' : 'text-slate-900'}`}>
+                      {pkg.price}
+                    </span>
+                    {pkg.period !== 'contact us' && (
+                      <span className={`text-sm ${pkg.popular ? 'text-indigo-100' : 'text-slate-500'}`}>
+                        /{pkg.period}
+                      </span>
+                    )}
+                  </div>
+                </div>
+
+                <ul className="space-y-4 mb-8">
+                  {pkg.features.map((feature, idx) => (
+                    <li key={idx} className="flex items-center gap-3">
+                      <Check className={`w-5 h-5 ${pkg.popular ? 'text-green-300' : 'text-green-500'}`} />
+                      <span className={pkg.popular ? 'text-indigo-100' : 'text-slate-600'}>
+                        {feature}
+                      </span>
+                    </li>
+                  ))}
+                </ul>
+
+                <button
+                  className={`w-full py-4 rounded-2xl font-semibold transition-all duration-200 ${
+                    pkg.popular
+                      ? 'bg-white text-indigo-600 hover:bg-indigo-50 hover:scale-105'
+                      : 'bg-gradient-to-r from-indigo-600 to-purple-600 text-white hover:shadow-lg hover:scale-105'
+                  }`}
+                >
+                  {pkg.price === 'Custom' ? 'Contact Sales' : 'Get Started'}
+                </button>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Enhanced Contact Section */}
+      <section id="contact" className="py-24 bg-white">
+        <div className="max-w-4xl mx-auto px-6">
+          <div className="text-center mb-16">
+            <h2 className="text-5xl font-bold mb-6">
+              <span className="bg-gradient-to-r from-slate-900 to-slate-700 bg-clip-text text-transparent">
+                Let's Build Something Amazing
+              </span>
+            </h2>
+            <p className="text-xl text-slate-600">
+              Ready to transform your ideas into reality? Get in touch with our team.
+            </p>
+          </div>
+
+          <div className="bg-gradient-to-br from-slate-50 to-indigo-50 rounded-3xl p-8 md:p-12">
+            <div className="space-y-6">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div>
+                  <label className="block text-sm font-medium text-slate-700 mb-2">Name</label>
+                  <input
+                    type="text"
+                    placeholder="Your full name"
+                    className="w-full px-4 py-3 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition-all duration-200 bg-white"
+                  />
+                </div>
+                <div>
+                  <label className="block text-sm font-medium text-slate-700 mb-2">Email</label>
+                  <input
+                    type="email"
+                    placeholder="your@email.com"
+                    className="w-full px-4 py-3 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition-all duration-200 bg-white"
+                  />
+                </div>
+              </div>
+              
+              <div>
+                <label className="block text-sm font-medium text-slate-700 mb-2">Subject</label>
+                <input
+                  type="text"
+                  placeholder="What's this about?"
+                  className="w-full px-4 py-3 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition-all duration-200 bg-white"
+                />
+              </div>
+              
+              <div>
+                <label className="block text-sm font-medium text-slate-700 mb-2">Message</label>
+                <textarea
+                  rows={6}
+                  placeholder="Tell us about your project..."
+                  className="w-full px-4 py-3 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition-all duration-200 bg-white resize-none"
+                />
+              </div>
+              
+              <button
+                className="w-full bg-gradient-to-r from-indigo-600 to-purple-600 text-white py-4 rounded-xl font-semibold text-lg shadow-lg hover:shadow-xl hover:scale-[1.02] transition-all duration-200 flex items-center justify-center"
+              >
+                Send Message
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+
+      <footer className="bg-slate-900 text-white py-16" >
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-12">
+            <div className="col-span-1 md:col-span-2">
+              <div className="flex items-center space-x-2 mb-4">
+                <div className="w-8 h-8 bg-gradient-to-br from-indigo-500 to-purple-600 rounded-lg flex items-center justify-center">
+                  <Rocket className="w-5 h-5 text-white" />
+                </div>
+                <h1 className="text-2xl font-bold bg-gradient-to-r from-indigo-400 to-purple-400 bg-clip-text text-transparent">
+                  LaunchNow
+                </h1>
+              </div>
+              <p className="text-slate-400 mb-6 max-w-md">
+                Empowering developers to build faster, ship sooner, and scale with confidence. 
+                Join thousands of developers who trust LaunchNow.
+              </p>
+              <div className="flex space-x-4">
+                {['Twitter', 'GitHub', 'Discord'].map((social) => (
+                  <a
+                    key={social}
+                    href="#"
+                    className="text-slate-400 hover:text-white transition-colors duration-200"
+                  >
+                    {social}
+                  </a>
+                ))}
+              </div>
+            </div>
+            
+            <div>
+              <h3 className="font-semibold mb-4">Product</h3>
+              <ul className="space-y-2 text-slate-400">
+                {['Features', 'Pricing', 'Documentation', 'API'].map((item) => (
+                  <li key={item}>
+                    <a href="#" className="hover:text-white transition-colors duration-200">
+                      {item}
+                    </a>
+                  </li>
                 ))}
               </ul>
-              <a
-                href="#"
-                className="inline-block bg-indigo-600 text-white px-6 py-2 rounded-lg hover:bg-indigo-700 transition"
-              >
-                Choose Plan
-              </a>
             </div>
-          ))}
+            
+            <div>
+              <h3 className="font-semibold mb-4">Support</h3>
+              <ul className="space-y-2 text-slate-400">
+                {['Help Center', 'Contact', 'Status', 'Community'].map((item) => (
+                  <li key={item}>
+                    <a href="#" className="hover:text-white transition-colors duration-200">
+                      {item}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+          
+          <div className="border-t border-slate-800 pt-8 flex flex-col md:flex-row justify-between items-center">
+            <p className="text-slate-400 text-sm">
+              © {new Date().getFullYear()} LaunchNow. Built with ❤️ using Vite + React + Tailwind CSS
+            </p>
+            <div className="flex space-x-6 mt-4 md:mt-0">
+              {['Privacy', 'Terms', 'Cookies'].map((item) => (
+                <a
+                  key={item}
+                  href="#"
+                  className="text-slate-400 hover:text-white transition-colors duration-200 text-sm"
+                >
+                  {item}
+                </a>
+              ))}
+            </div>
+          </div>
         </div>
-      </section>
-
-      {/* Contact Section */}
-      <section id="contact" className="py-24 px-6 bg-gray-50 text-center">
-        <h3 className="text-4xl font-bold mb-6">Let’s Connect</h3>
-        <p className="text-gray-600 mb-10 max-w-xl mx-auto">
-          Have questions, custom needs, or feedback? Drop us a message.
-        </p>
-        <form className="max-w-xl mx-auto space-y-4">
-          <input
-            type="text"
-            placeholder="Your Name"
-            className="w-full px-4 py-3 border rounded-md focus:outline-none focus:ring focus:ring-indigo-300"
-          />
-          <input
-            type="email"
-            placeholder="Your Email"
-            className="w-full px-4 py-3 border rounded-md focus:outline-none focus:ring focus:ring-indigo-300"
-          />
-          <textarea
-            rows={5}
-            placeholder="Your Message"
-            className="w-full px-4 py-3 border rounded-md focus:outline-none focus:ring focus:ring-indigo-300"
-          />
-          <button
-            type="submit"
-            className="bg-indigo-600 text-white px-6 py-3 rounded-md hover:bg-indigo-700 transition"
-          >
-            Send Message
-          </button>
-        </form>
-      </section>
-
-      {/* Footer */}
-      <footer className="py-6 bg-white text-center text-gray-500 text-sm border-t">
-        <p>
-          &copy; {new Date().getFullYear()} LaunchNow. Built with 💙 using Vite
-          + React + TailwindCSS
-        </p>
       </footer>
-    </div>
+          </div>
+
   );
 };
 
