@@ -7,7 +7,7 @@ import puppeteer from "puppeteer";
     });
 
     const page = await browser.newPage();
-    await page.goto("http://localhost:8080", {
+    await page.goto("http://localhost:3000", {
       waitUntil: "networkidle0",
       timeout: 0,
     });
