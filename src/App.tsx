@@ -592,6 +592,131 @@ const App = () => {
         </div>
       </section>
 
+      {/* How It Works Section */}
+      <section className="py-24 bg-white relative">
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="text-center mb-20">
+            <h2 className="text-5xl font-bold mb-6">
+              <span className="bg-gradient-to-r from-slate-900 to-slate-700 bg-clip-text text-transparent">
+                Get Started in Minutes
+              </span>
+            </h2>
+            <p className="text-xl text-slate-600 max-w-3xl mx-auto">
+              Our streamlined process gets you from idea to deployment faster
+              than ever
+            </p>
+          </div>
+
+          <div className="relative">
+            {/* Connection lines */}
+            <div className="hidden lg:block absolute top-1/2 left-0 right-0 h-0.5 bg-gradient-to-r from-indigo-200 via-purple-200 to-indigo-200 transform -translate-y-1/2"></div>
+
+            <div className="grid grid-cols-1 lg:grid-cols-4 gap-8">
+              {[
+                {
+                  step: "01",
+                  title: "Clone & Setup",
+                  description:
+                    "Clone the repository and run our one-command setup script",
+                  icon: "🚀",
+                  color: "from-blue-500 to-cyan-500",
+                },
+                {
+                  step: "02",
+                  title: "Customize",
+                  description:
+                    "Modify components, colors, and layouts to match your brand",
+                  icon: "🎨",
+                  color: "from-purple-500 to-pink-500",
+                },
+                {
+                  step: "03",
+                  title: "Build Features",
+                  description:
+                    "Add your business logic using our pre-built components",
+                  icon: "⚡",
+                  color: "from-green-500 to-teal-500",
+                },
+                {
+                  step: "04",
+                  title: "Deploy",
+                  description:
+                    "Push to production with our optimized build configuration",
+                  icon: "🌟",
+                  color: "from-orange-500 to-red-500",
+                },
+              ].map((item, i) => (
+                <div key={i} className="relative group">
+                  <div className="text-center">
+                    <div
+                      className={`relative mx-auto w-20 h-20 bg-gradient-to-br ${item.color} rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300 shadow-lg`}
+                    >
+                      <span className="text-3xl">{item.icon}</span>
+                      <div className="absolute -top-2 -right-2 w-8 h-8 bg-white rounded-full flex items-center justify-center shadow-lg">
+                        <span className="text-xs font-bold text-slate-700">
+                          {item.step}
+                        </span>
+                      </div>
+                    </div>
+                    <h3 className="text-xl font-bold text-slate-900 mb-3">
+                      {item.title}
+                    </h3>
+                    <p className="text-slate-600 leading-relaxed">
+                      {item.description}
+                    </p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+
+      <section className="py-24 bg-gradient-to-br from-slate-900 to-indigo-900 text-white relative overflow-hidden">
+        <div className="absolute inset-0 bg-[url('data:image/svg+xml,%3Csvg%20width%3D%2260%22%20height%3D%2260%22%20viewBox%3D%220%200%2060%2060%22%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%3E%3Cg%20fill%3D%22none%22%20fill-rule%3D%22evenodd%22%3E%3Cg%20fill%3D%22%23ffffff%22%20fill-opacity%3D%220.05%22%3E%3Ccircle%20cx%3D%2230%22%20cy%3D%2230%22%20r%3D%222%22/%3E%3C/g%3E%3C/g%3E%3C/svg%3E')] opacity-20"></div>
+        
+        <div className="max-w-7xl mx-auto px-6 relative">
+          <div className="text-center mb-20">
+            <h2 className="text-5xl font-bold mb-6 text-white">
+              Built with Modern Technologies
+            </h2>
+            <p className="text-xl text-indigo-200 max-w-3xl mx-auto">
+              We use the latest and most reliable tools to ensure your projects are future-proof
+            </p>
+          </div>
+
+          <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-8">
+            {[
+              { name: "React", logo: "⚛️", description: "Component-based UI" },
+              { name: "Vite", logo: "⚡", description: "Lightning fast builds" },
+              { name: "Tailwind", logo: "🎨", description: "Utility-first CSS" },
+              { name: "TypeScript", logo: "📘", description: "Type-safe code" },
+              { name: "Node.js", logo: "🟢", description: "JavaScript runtime" },
+              { name: "Vercel", logo: "▲", description: "Instant deployment" }
+            ].map((tech, i) => (
+              <div
+                key={i}
+                className="group bg-white/10 backdrop-blur-sm rounded-2xl p-6 text-center hover:bg-white/20 transition-all duration-300 hover:-translate-y-2 border border-white/10"
+              >
+                <div className="text-4xl mb-4 group-hover:scale-110 transition-transform duration-300">
+                  {tech.logo}
+                </div>
+                <h3 className="font-bold text-white mb-2">{tech.name}</h3>
+                <p className="text-sm text-indigo-200">{tech.description}</p>
+              </div>
+            ))}
+          </div>
+
+          <div className="mt-16 text-center">
+            <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm border border-white/20 rounded-full px-6 py-3">
+              <span className="w-2 h-2 bg-green-400 rounded-full animate-pulse"></span>
+              <span className="text-white font-medium">Always up-to-date with latest versions</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
       <footer className="bg-slate-900 text-white py-16">
         <div className="max-w-7xl mx-auto px-6">
           <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-12">
