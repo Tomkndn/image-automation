@@ -1,5 +1,7 @@
 import { useState, useEffect } from 'react';
 import { ChevronDown, Zap, Smartphone, Brain, Check, Menu, X, ArrowRight, Star, Users, Rocket } from 'lucide-react';
+import ShowcaseSection from './components/ShowCase';
+import TeamSection from './components/Team';
 
 const App = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -920,6 +922,9 @@ const App = () => {
           </div>
         </div>
       </section>
+
+      <ShowcaseSection />
+      <TeamSection />
 
       <footer className="bg-slate-900 text-white py-16">
         <div className="max-w-7xl mx-auto px-6">

@@ -27,7 +27,7 @@ import fs from "fs";
 
     // Clean up old screenshots
     const files = fs.readdirSync(".");
-    files.forEach((file) => {
+    files.forEach(async(file) => {
       if (
         file.startsWith("preview-") &&
         file.endsWith(".png") &&
@@ -35,6 +35,11 @@ import fs from "fs";
       ) {
         fs.unlinkSync(file);
         console.log(`🗑️ Deleted old screenshot: ${file}`);
+
+        // Remove from Git as well
+        const { execSync } = await import("child_process");
+        execSync(`git rm --cached ${file}`);
+        console.log(`📁 Removed ${file} from Git index`);
       }
     });
 
