@@ -39,20 +39,20 @@ const ComparisonSection = () => {
   ];
 
   return (
-    <section className="py-24 bg-gradient-to-br from-slate-50 to-white">
+    <section className="py-24 bg-gradient-to-br from-slate-50 to-white dark:from-slate-900 dark:to-slate-950">
       <div className="max-w-6xl mx-auto px-6">
         <div className="text-center mb-20">
           <h2 className="text-5xl font-bold mb-6">
-            <span className="bg-gradient-to-r from-slate-900 to-slate-700 bg-clip-text text-transparent">
+            <span className="bg-gradient-to-r from-slate-900 to-slate-700 dark:from-white dark:to-slate-200 bg-clip-text text-transparent">
               Why Choose LaunchNow?
             </span>
           </h2>
-          <p className="text-xl text-slate-600 max-w-3xl mx-auto">
+          <p className="text-xl text-slate-600 dark:text-slate-300 max-w-3xl mx-auto">
             See how we stack up against other solutions
           </p>
         </div>
 
-        <div className="bg-white rounded-3xl shadow-xl border border-slate-200 overflow-hidden">
+        <div className="bg-white dark:bg-slate-800 rounded-3xl shadow-xl border border-slate-200 dark:border-slate-700 overflow-hidden">
           <div className="grid grid-cols-3 bg-gradient-to-r from-indigo-500 to-purple-600 text-white p-6">
             <div className="text-center">
               <span className="text-2xl">🚀</span>
@@ -71,23 +71,27 @@ const ComparisonSection = () => {
           {comparisons.map((item, i) => (
             <div
               key={i}
-              className={`grid grid-cols-3 p-6 border-b border-slate-100 last:border-b-0 hover:bg-slate-50 transition-colors duration-200 ${
-                i % 2 === 0 ? "bg-white" : "bg-slate-50/50"
-              }`}
+              className={`grid grid-cols-3 p-6 border-b border-slate-100 last:border-b-0 hover:bg-slate-50 transition-colors duration-200
+                ${
+                  i % 2 === 0
+                    ? "bg-white dark:bg-slate-800"
+                    : "bg-slate-50/50 dark:bg-slate-700/50"
+                }
+                dark:border-slate-700 dark:hover:bg-slate-700`}
             >
               <div className="flex items-center gap-3">
                 <span className="text-2xl">{item.icon}</span>
-                <span className="font-semibold text-slate-900">
+                <span className="font-semibold text-slate-900 dark:text-white">
                   {item.feature}
                 </span>
               </div>
               <div className="flex items-center justify-center">
-                <span className="bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm font-medium">
+                <span className="bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm font-medium dark:bg-green-800 dark:text-green-100">
                   {item.us}
                 </span>
               </div>
               <div className="flex items-center justify-center">
-                <span className="bg-red-100 text-red-800 px-3 py-1 rounded-full text-sm font-medium">
+                <span className="bg-red-100 text-red-800 px-3 py-1 rounded-full text-sm font-medium dark:bg-red-800 dark:text-red-100">
                   {item.others}
                 </span>
               </div>

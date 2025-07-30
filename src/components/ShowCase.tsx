@@ -1,6 +1,6 @@
 import { ArrowRight } from "lucide-react";
 
-export default function ShowcaseSection(){
+export default function ShowcaseSection() {
   const projects = [
     {
       title: "E-commerce Platform",
@@ -34,19 +34,22 @@ export default function ShowcaseSection(){
   ];
 
   return (
-    <section className="py-24 bg-slate-900 text-white relative overflow-hidden">
-      <div className="absolute inset-0 bg-gradient-to-br from-slate-900 via-indigo-900/50 to-purple-900/50"></div>
+    // This section is designed to be dark by default.
+    // In light mode, it will keep its dark appearance.
+    // In dark mode, we ensure consistency.
+    <section className="py-24 bg-slate-900 text-white relative overflow-hidden dark:bg-slate-900 dark:text-white">
+      <div className="absolute inset-0 bg-gradient-to-br from-slate-900 via-indigo-900/50 to-purple-900/50 dark:from-slate-900 dark:via-indigo-900/50 dark:to-purple-900/50"></div>
 
       <div className="max-w-7xl mx-auto px-6 relative">
         <div className="text-center mb-20">
-          <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm border border-white/20 rounded-full px-4 py-2 text-sm font-medium text-indigo-200 mb-6">
+          <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm border border-white/20 rounded-full px-4 py-2 text-sm font-medium text-indigo-200 mb-6 dark:bg-white/10 dark:border-white/20 dark:text-indigo-200">
             <span className="w-2 h-2 bg-green-400 rounded-full animate-pulse"></span>
             Built with LaunchNow
           </div>
-          <h2 className="text-5xl font-bold mb-6 text-white">
+          <h2 className="text-5xl font-bold mb-6 text-white dark:text-white">
             Real Projects, Real Results
           </h2>
-          <p className="text-xl text-slate-300 max-w-3xl mx-auto">
+          <p className="text-xl text-slate-300 max-w-3xl mx-auto dark:text-slate-300">
             See what developers have built using our starter kit
           </p>
         </div>
@@ -55,7 +58,7 @@ export default function ShowcaseSection(){
           {projects.map((project, i) => (
             <div
               key={i}
-              className="group bg-white/5 backdrop-blur-sm rounded-3xl overflow-hidden border border-white/10 hover:border-white/20 transition-all duration-300 hover:-translate-y-2"
+              className="group bg-white/5 backdrop-blur-sm rounded-3xl overflow-hidden border border-white/10 hover:border-white/20 transition-all duration-300 hover:-translate-y-2 dark:bg-white/5 dark:border-white/10 dark:hover:border-white/20"
             >
               <div className="relative overflow-hidden">
                 <img
@@ -72,10 +75,10 @@ export default function ShowcaseSection(){
               </div>
 
               <div className="p-6">
-                <h3 className="text-xl font-bold text-white mb-2 group-hover:text-indigo-300 transition-colors">
+                <h3 className="text-xl font-bold text-white mb-2 group-hover:text-indigo-300 transition-colors dark:text-white dark:group-hover:text-indigo-300">
                   {project.title}
                 </h3>
-                <p className="text-slate-300 mb-4 leading-relaxed">
+                <p className="text-slate-300 mb-4 leading-relaxed dark:text-slate-300">
                   {project.description}
                 </p>
 
@@ -83,14 +86,14 @@ export default function ShowcaseSection(){
                   {project.tags.map((tag, idx) => (
                     <span
                       key={idx}
-                      className="bg-white/10 text-slate-300 px-2 py-1 rounded-lg text-xs font-medium"
+                      className="bg-white/10 text-slate-300 px-2 py-1 rounded-lg text-xs font-medium dark:bg-white/10 dark:text-slate-300"
                     >
                       {tag}
                     </span>
                   ))}
                 </div>
 
-                <button className="flex items-center gap-2 text-indigo-300 hover:text-white font-medium group-hover:gap-3 transition-all duration-200">
+                <button className="flex items-center gap-2 text-indigo-300 hover:text-white font-medium group-hover:gap-3 transition-all duration-200 dark:text-indigo-300 dark:hover:text-white">
                   View Project
                   <ArrowRight className="w-4 h-4" />
                 </button>
@@ -107,4 +110,4 @@ export default function ShowcaseSection(){
       </div>
     </section>
   );
-};
+}
