@@ -47,6 +47,16 @@ jobs:
           npm install puppeteer
           node screenshot.js
 
+      - name: 📝 Update README with screenshot
+        run: |
+          if grep -q "!\[Preview\]" README.md; then
+            # Replace existing preview line
+            sed -i 's|!\[Preview\](.*)|![Preview](preview.png)|' README.md
+          else
+            # Append preview to end of README
+            echo -e "\n![Preview](preview.png)" >> README.md
+          fi
+
       - name: 📂 Commit updated screenshot
         run: |
           git config --global user.name "github-actions[bot]"
