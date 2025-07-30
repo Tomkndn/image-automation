@@ -51,7 +51,7 @@ jobs:
         run: |
           git config --global user.name "github-actions[bot]"
           git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add preview.png
+          git add preview.png README.md
           git commit -m "🤖 Updated screenshot"
           git push
         env:
