@@ -169,9 +169,9 @@ const App = () => {
               </div>
 
               <h1 className="text-5xl lg:text-7xl font-extrabold leading-tight">
-                <span className="bg-gradient-to-r from-slate-900 via-slate-800 to-slate-900 dark:from-white dark:via-slate-200 dark:to-white bg-clip-text text-transparent">
+                {/* <span className="bg-gradient-to-r from-slate-900 via-slate-800 to-slate-900 dark:from-white dark:via-slate-200 dark:to-white bg-clip-text text-transparent">
                   Supercharge Your
-                </span>
+                </span> */}
                 <br />
                 <span className="bg-gradient-to-r from-indigo-600 via-purple-600 to-indigo-700 bg-clip-text text-transparent">
                   Launch
