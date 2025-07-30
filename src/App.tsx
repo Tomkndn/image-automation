@@ -448,7 +448,7 @@ const App = () => {
         <div className="max-w-7xl mx-auto px-6 relative">
           <div className="text-center mb-16">
             <h2 className="text-4xl md:text-5xl font-bold mb-6">
-              Trusted by Developers Worldwide
+              Gali me aaj chand nikla
             </h2>
             <p className="text-xl text-indigo-100 max-w-2xl mx-auto">
               Join thousands of developers who have accelerated their
@@ -501,7 +501,7 @@ const App = () => {
               </div>
               <h2 className="text-4xl md:text-5xl font-bold mb-6">
                 <span className="bg-gradient-to-r from-slate-900 to-slate-700 dark:from-white dark:to-slate-200 bg-clip-text text-transparent">
-                  Stay in the Loop
+                  Stay out the Loop
                 </span>
               </h2>
               <p className="text-xl text-slate-600 dark:text-slate-300 max-w-2xl mx-auto">
