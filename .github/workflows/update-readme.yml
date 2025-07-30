@@ -1,0 +1,55 @@
+name: Build, Screenshot & Update README
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  build-and-screenshot:
+    runs-on: ubuntu-latest
+
+    env:
+      DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
+      DOCKERHUB_TOKEN: ${{ secrets.DOCKERHUB_TOKEN }}
+      IMAGE_NAME: image-automation
+
+    steps:
+      - name: 🛎️ Checkout repository
+        uses: actions/checkout@v3
+
+      - name: 🐳 Log in to Docker Hub
+        run: echo "${DOCKERHUB_TOKEN}" | docker login -u "${DOCKERHUB_USERNAME}" --password-stdin
+
+      - name: 📦 Build Docker image
+        run: docker build -t $DOCKERHUB_USERNAME/$IMAGE_NAME .
+
+      - name: 🚀 Push to Docker Hub
+        run: docker push $DOCKERHUB_USERNAME/$IMAGE_NAME
+
+      - name: 🧪 Start container
+        run: docker run -d -p 3000:80 --name web $DOCKERHUB_USERNAME/$IMAGE_NAME
+
+      - name: 💤 Wait for container to be ready
+        run: |
+          sleep 15
+          curl --retry 10 --retry-delay 3 --retry-connrefused http://localhost:3000
+
+      - name: 📸 Take screenshot with Puppeteer
+        uses: actions/setup-node@v3
+        with:
+          node-version: '20'
+
+      - name: 📦 Install Puppeteer & Capture Screenshot
+        run: |
+          npm install puppeteer
+          node screenshot.js
+
+      - name: 📂 Commit updated screenshot
+        run: |
+          git config --global user.name "tomkndn"
+          git config --global user.email "ntamsoy66@gmail.com"
+          git add preview.png
+          git commit -m "🤖 Updated screenshot"
+          git push
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
