@@ -4,6 +4,8 @@ import { ChevronDown, Zap, Smartphone, Brain, Check, Menu, X, ArrowRight, Star, 
 const App = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [scrollY, setScrollY] = useState(0);
+  const [isOpen, setIsOpen] = useState(false);
+
 
   useEffect(() => {
     const handleScroll = () => setScrollY(window.scrollY);
@@ -672,28 +674,40 @@ const App = () => {
         </div>
       </section>
 
-
       <section className="py-24 bg-gradient-to-br from-slate-900 to-indigo-900 text-white relative overflow-hidden">
         <div className="absolute inset-0 bg-[url('data:image/svg+xml,%3Csvg%20width%3D%2260%22%20height%3D%2260%22%20viewBox%3D%220%200%2060%2060%22%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%3E%3Cg%20fill%3D%22none%22%20fill-rule%3D%22evenodd%22%3E%3Cg%20fill%3D%22%23ffffff%22%20fill-opacity%3D%220.05%22%3E%3Ccircle%20cx%3D%2230%22%20cy%3D%2230%22%20r%3D%222%22/%3E%3C/g%3E%3C/g%3E%3C/svg%3E')] opacity-20"></div>
-        
+
         <div className="max-w-7xl mx-auto px-6 relative">
           <div className="text-center mb-20">
             <h2 className="text-5xl font-bold mb-6 text-white">
               Built with Modern Technologies
             </h2>
             <p className="text-xl text-indigo-200 max-w-3xl mx-auto">
-              We use the latest and most reliable tools to ensure your projects are future-proof
+              We use the latest and most reliable tools to ensure your projects
+              are future-proof
             </p>
           </div>
 
           <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-8">
             {[
               { name: "React", logo: "⚛️", description: "Component-based UI" },
-              { name: "Vite", logo: "⚡", description: "Lightning fast builds" },
-              { name: "Tailwind", logo: "🎨", description: "Utility-first CSS" },
+              {
+                name: "Vite",
+                logo: "⚡",
+                description: "Lightning fast builds",
+              },
+              {
+                name: "Tailwind",
+                logo: "🎨",
+                description: "Utility-first CSS",
+              },
               { name: "TypeScript", logo: "📘", description: "Type-safe code" },
-              { name: "Node.js", logo: "🟢", description: "JavaScript runtime" },
-              { name: "Vercel", logo: "▲", description: "Instant deployment" }
+              {
+                name: "Node.js",
+                logo: "🟢",
+                description: "JavaScript runtime",
+              },
+              { name: "Vercel", logo: "▲", description: "Instant deployment" },
             ].map((tech, i) => (
               <div
                 key={i}
@@ -711,7 +725,197 @@ const App = () => {
           <div className="mt-16 text-center">
             <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm border border-white/20 rounded-full px-6 py-3">
               <span className="w-2 h-2 bg-green-400 rounded-full animate-pulse"></span>
-              <span className="text-white font-medium">Always up-to-date with latest versions</span>
+              <span className="text-white font-medium">
+                Always up-to-date with latest versions
+              </span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* FAQ Section */}
+      <section className="py-24 bg-slate-50">
+        <div className="max-w-4xl mx-auto px-6">
+          <div className="text-center mb-20">
+            <h2 className="text-5xl font-bold mb-6">
+              <span className="bg-gradient-to-r from-slate-900 to-slate-700 bg-clip-text text-transparent">
+                Frequently Asked Questions
+              </span>
+            </h2>
+            <p className="text-xl text-slate-600">
+              Everything you need to know about LaunchNow
+            </p>
+          </div>
+
+          <div className="space-y-4">
+            {[
+              {
+                question: "What's included in the starter kit?",
+                answer:
+                  "LaunchNow includes a complete Vite + React + Tailwind setup with pre-built components, routing, state management, authentication templates, and deployment configurations.",
+              },
+              {
+                question: "Do I need to know React to use this?",
+                answer:
+                  "Basic React knowledge is recommended. However, our comprehensive documentation and examples make it easy for developers with JavaScript experience to get started quickly.",
+              },
+              {
+                question: "Can I use this for commercial projects?",
+                answer:
+                  "Absolutely! LaunchNow is designed for both personal and commercial use. Build and sell as many projects as you want with our Pro and Enterprise plans.",
+              },
+              {
+                question: "How often do you update the components?",
+                answer:
+                  "We release updates monthly with new components, bug fixes, and improvements. All updates are backward compatible and include migration guides when needed.",
+              },
+              {
+                question: "What kind of support do you offer?",
+                answer:
+                  "We provide community support for free users, priority email support for Pro users, and dedicated Slack channels for Enterprise customers.",
+              },
+              {
+                question: "Can I customize the design system?",
+                answer:
+                  "Yes! The entire design system is built with CSS custom properties and Tailwind configuration, making it easy to customize colors, spacing, typography, and more.",
+              },
+            ].map((faq, i) => {
+              return (
+                <div
+                  key={i}
+                  className="bg-white rounded-2xl shadow-sm border border-slate-200 overflow-hidden"
+                >
+                  <button
+                    onClick={() => setIsOpen(!isOpen)}
+                    className="w-full px-8 py-6 text-left flex justify-between items-center hover:bg-slate-50 transition-colors duration-200"
+                  >
+                    <h3 className="text-lg font-semibold text-slate-900 pr-8">
+                      {faq.question}
+                    </h3>
+                    <ChevronDown
+                      className={`w-5 h-5 text-slate-500 transition-transform duration-200 ${
+                        isOpen ? "rotate-180" : ""
+                      }`}
+                    />
+                  </button>
+                  {isOpen && (
+                    <div className="px-8 pb-6">
+                      <p className="text-slate-600 leading-relaxed">
+                        {faq.answer}
+                      </p>
+                    </div>
+                  )}
+                </div>
+              );
+            })}
+          </div>
+
+          <div className="mt-12 text-center">
+            <p className="text-slate-600 mb-4">Still have questions?</p>
+            <button className="bg-gradient-to-r from-indigo-600 to-purple-600 text-white px-8 py-3 rounded-full font-semibold hover:shadow-lg hover:scale-105 transition-all duration-200">
+              Contact Support
+            </button>
+          </div>
+        </div>
+      </section>
+
+      {/* Stats Section */}
+      <section className="py-24 bg-gradient-to-r from-indigo-600 via-purple-600 to-indigo-700 text-white relative overflow-hidden">
+        <div className="absolute inset-0 bg-black/20"></div>
+        <div className="absolute top-0 left-0 w-full h-full">
+          <div className="absolute top-1/4 left-1/4 w-64 h-64 bg-white/10 rounded-full blur-3xl"></div>
+          <div className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-white/5 rounded-full blur-3xl"></div>
+        </div>
+
+        <div className="max-w-7xl mx-auto px-6 relative">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl md:text-5xl font-bold mb-6">
+              Trusted by Developers Worldwide
+            </h2>
+            <p className="text-xl text-indigo-100 max-w-2xl mx-auto">
+              Join thousands of developers who have accelerated their
+              development workflow
+            </p>
+          </div>
+
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+            {[
+              { number: "10,000+", label: "Active Developers", icon: "👥" },
+              { number: "50,000+", label: "Projects Built", icon: "🚀" },
+              { number: "99.9%", label: "Uptime", icon: "⚡" },
+              { number: "24/7", label: "Support", icon: "💬" },
+            ].map((stat, i) => (
+              <div key={i} className="text-center group">
+                <div className="text-4xl mb-4 group-hover:scale-110 transition-transform duration-300">
+                  {stat.icon}
+                </div>
+                <div className="text-3xl md:text-4xl font-bold mb-2 text-white">
+                  {stat.number}
+                </div>
+                <div className="text-indigo-200 font-medium">{stat.label}</div>
+              </div>
+            ))}
+          </div>
+
+          <div className="mt-16 text-center">
+            <div className="inline-flex flex-col md:flex-row items-center gap-6 bg-white/10 backdrop-blur-sm rounded-2xl p-8 border border-white/20">
+              <div className="text-center md:text-left">
+                <h3 className="text-2xl font-bold mb-2">Ready to join them?</h3>
+                <p className="text-indigo-100">
+                  Start building your next project today
+                </p>
+              </div>
+              <button className="bg-white text-indigo-600 px-8 py-4 rounded-full font-bold hover:bg-indigo-50 hover:scale-105 transition-all duration-200 shadow-lg">
+                Get Started Free
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Newsletter Section */}
+      <section className="py-24 bg-white relative">
+        <div className="max-w-4xl mx-auto px-6 text-center">
+          <div className="bg-gradient-to-br from-indigo-50 to-purple-50 rounded-3xl p-12 md:p-16 border border-indigo-100">
+            <div className="mb-8">
+              <div className="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-br from-indigo-500 to-purple-600 rounded-2xl mb-6">
+                <span className="text-2xl">📧</span>
+              </div>
+              <h2 className="text-4xl md:text-5xl font-bold mb-6">
+                <span className="bg-gradient-to-r from-slate-900 to-slate-700 bg-clip-text text-transparent">
+                  Stay in the Loop
+                </span>
+              </h2>
+              <p className="text-xl text-slate-600 max-w-2xl mx-auto">
+                Get the latest updates, new components, and developer tips
+                delivered straight to your inbox
+              </p>
+            </div>
+
+            <div className="flex flex-col md:flex-row gap-4 max-w-md mx-auto mb-8">
+              <input
+                type="email"
+                placeholder="Enter your email"
+                className="flex-1 px-6 py-4 rounded-full border border-slate-200 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent bg-white text-slate-900"
+              />
+              <button className="bg-gradient-to-r from-indigo-600 to-purple-600 text-white px-8 py-4 rounded-full font-semibold hover:shadow-lg hover:scale-105 transition-all duration-200 whitespace-nowrap">
+                Subscribe
+              </button>
+            </div>
+
+            <div className="flex flex-wrap justify-center items-center gap-6 text-sm text-slate-500">
+              <div className="flex items-center gap-2">
+                <Check className="w-4 h-4 text-green-500" />
+                <span>No spam, ever</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <Check className="w-4 h-4 text-green-500" />
+                <span>Unsubscribe anytime</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <Check className="w-4 h-4 text-green-500" />
+                <span>Weekly updates</span>
+              </div>
             </div>
           </div>
         </div>
