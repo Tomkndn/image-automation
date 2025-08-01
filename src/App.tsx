@@ -169,9 +169,9 @@ const App = () => {
               </div>
 
               <h1 className="text-5xl lg:text-7xl font-extrabold leading-tight">
-                {/* <span className="bg-gradient-to-r from-slate-900 via-slate-800 to-slate-900 dark:from-white dark:via-slate-200 dark:to-white bg-clip-text text-transparent">
+                <span className="bg-gradient-to-r from-slate-900 via-slate-800 to-slate-900 dark:from-white dark:via-slate-200 dark:to-white bg-clip-text text-transparent">
                   Supercharge Your
-                </span> */}
+                </span>
                 <br />
                 <span className="bg-gradient-to-r from-indigo-600 via-purple-600 to-indigo-700 bg-clip-text text-transparent">
                   Launch
@@ -448,7 +448,7 @@ const App = () => {
         <div className="max-w-7xl mx-auto px-6 relative">
           <div className="text-center mb-16">
             <h2 className="text-4xl md:text-5xl font-bold mb-6">
-              Gali me aaj chand nikla
+              Trusted by Developers Worldwide
             </h2>
             <p className="text-xl text-indigo-100 max-w-2xl mx-auto">
               Join thousands of developers who have accelerated their
@@ -501,7 +501,7 @@ const App = () => {
               </div>
               <h2 className="text-4xl md:text-5xl font-bold mb-6">
                 <span className="bg-gradient-to-r from-slate-900 to-slate-700 dark:from-white dark:to-slate-200 bg-clip-text text-transparent">
-                  Stay out the Loop
+                  Stay in the Loop
                 </span>
               </h2>
               <p className="text-xl text-slate-600 dark:text-slate-300 max-w-2xl mx-auto">
